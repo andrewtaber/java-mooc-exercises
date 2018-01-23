@@ -49,6 +49,27 @@ public class Participant implements Comparable<Participant>{
         return this.points;
     }
     
+    public String getJumpList() {
+        String[] jumpArray = makeJumpArray();
+        int arrLen = jumpArray.length;
+        String jumpList = "";
+        for(int i = 0; i < arrLen - 1; i++) {
+            jumpList += jumpArray[i] + ", ";
+        }
+        jumpList += jumpArray[arrLen - 1];
+        return jumpList;
+    }
+    
+    private String[] makeJumpArray() {
+        String[] jumpArray = new String[jumps.size()];
+        int i = 0;
+        for(Integer jump : jumps) {
+            jumpArray[i] = jump.toString() + " m";
+            i++;
+        }
+        return jumpArray;
+    }
+    
     @Override
     public int compareTo(Participant participant) {
         return this.getPoints() - participant.getPoints();

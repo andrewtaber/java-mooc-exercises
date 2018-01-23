@@ -26,6 +26,7 @@ public class UserInterface {
         intro();
         requestParticipants();
         runTournament();
+        printResults();
     }
     
     private static void intro() {
@@ -44,11 +45,13 @@ public class UserInterface {
         }
         System.out.println();
         System.out.println("The tournament begins!");
+        System.out.println();
     }
     
     private void runTournament() {
         int round = 1;
         while(jumpOrQuit().equals("jump")) {
+            System.out.println();
             System.out.println("Round " + round);
             System.out.println();
             System.out.println("Jumping order:");
@@ -83,6 +86,26 @@ public class UserInterface {
             order++;
         }   
         System.out.println();
+    }
+
+    private void printResults() {
+        printResultsHeading();
+        jumpers.setWinningOrder();
+        ArrayList<Participant> winningOrder = jumpers.getJumpers();
+        int order = 1;
+        for(Participant participant : winningOrder) {
+            System.out.println(order + "           " + participant);
+            System.out.println("            jump lengths: " + participant.getJumpList());
+            order++;
+        }    
+    }
+    
+    private void printResultsHeading() {
+        System.out.println();
+        System.out.println("Thanks!");
+        System.out.println();
+        System.out.println("Tournament results:");
+        System.out.println("Position    Name");
     }
     
     private String jumpOrQuit() {

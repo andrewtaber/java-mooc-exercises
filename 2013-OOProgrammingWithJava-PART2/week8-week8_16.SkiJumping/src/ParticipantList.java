@@ -29,6 +29,10 @@ public class ParticipantList {
         Collections.sort(participants);
     }
     
+    public void setWinningOrder() {
+        participants.sort(Collections.reverseOrder());
+    }
+    
     public ArrayList<Participant> getJumpers() {
         return participants;
     }
