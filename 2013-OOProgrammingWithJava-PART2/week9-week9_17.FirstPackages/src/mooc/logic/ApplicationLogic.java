@@ -7,7 +7,7 @@ import mooc.ui.UserInterface;
  * @author andytaber
  */
 public class ApplicationLogic {
-    UserInterface ui;
+    private UserInterface ui;
     
     public ApplicationLogic(UserInterface ui) {
         this.ui = ui;
