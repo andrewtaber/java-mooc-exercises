@@ -5,14 +5,14 @@ public class Container {
     private double capacity;
     private double volume;
 
-    public Container(double tilavuus) {
-        if (tilavuus > 0.0) {
-            this.capacity = tilavuus;
+    public Container(double capacity) {
+        if (capacity > 0.0) {
+            this.capacity = capacity;
         } else {
             this.capacity = 0.0;
         }
 
-        volume = 0.0;
+        this.volume = 0.0;
     }
 
 
