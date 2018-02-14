@@ -1,5 +1,9 @@
 package dungeon;
 
+import Movables.Movable;
+import Movables.Player;
+import Movables.Vampire;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -13,6 +17,8 @@ public class Dungeon {
     private int moves;
     boolean vampiresMove;
     Scanner scanner = new Scanner(System.in);
+    Player player;
+    ArrayList<Movable> movables;
     
     
     public Dungeon(int length, int height, int vampires, int moves, boolean vampiresMove) {
@@ -24,8 +30,17 @@ public class Dungeon {
     }
     
     public void run() {
+        printMovesLeft();
         
     }
     
+    private void initializeDungeon() {
+        movables.add(new Player(moves));
+        
+    }
     
+    private void printMovesLeft() {
+        System.out.println(player.getMovesLeft());
+    }
+     
 }

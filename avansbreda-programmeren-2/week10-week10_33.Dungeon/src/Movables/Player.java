@@ -7,8 +7,14 @@ package Movables;
 public class Player extends Movable{
     int movesLeft;
     
-    public Player(int x, int y) {
-        super(x, y);
+    public Player(int movesLeft) {
+        super(0, 0);
+        this.movesLeft = movesLeft;
     }
+    
+    public int getMovesLeft() {
+        return this.movesLeft;
+    }
+    
     
 }

@@ -21,11 +21,25 @@ public abstract class Movable {
         return y;
     }
     
-    void moveX(int x) {
+    public void moveX(int x) {
         this.x += x;
     }
     
-    void moveY(int y) {
+    public void moveY(int y) {
         this.y += y;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if(object == null) {
+            return false;
+        }
+        if(getClass() != object.getClass()) {
+            return false;
+        }
+        
+        Movable compared = (Movable) object;
+        
+        return !(this.x != compared.getX() || this.y != compared.getY());        
     }
 }
