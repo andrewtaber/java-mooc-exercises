@@ -18,6 +18,7 @@ public class VampireGenerator {
         this.numOfVampires = numOfVampires;
         this.length = length;
         this.height = height;
+        this.vampireList = new ArrayList<Vampire>();
     }
     
     public ArrayList<Vampire> newVampires() {
@@ -26,6 +27,7 @@ public class VampireGenerator {
             while(!vampireIsValid(newVampire)) {
                 newVampire = new Vampire(randX(), randY());
             }
+            newVampire.setLimits(height, length);
             vampireList.add(newVampire);
         }
         return vampireList;

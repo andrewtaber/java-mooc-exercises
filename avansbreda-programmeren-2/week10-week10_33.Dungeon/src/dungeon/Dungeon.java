@@ -3,6 +3,7 @@ package dungeon;
 import Movables.Movable;
 import Movables.Player;
 import Movables.Vampire;
+import Movables.VampireGenerator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class Dungeon {
     boolean vampiresMove;
     Scanner scanner = new Scanner(System.in);
     Player player;
-    ArrayList<Movable> movables;
+    ArrayList<Vampire> vampiresList;
     
     
     public Dungeon(int length, int height, int vampires, int moves, boolean vampiresMove) {
@@ -30,17 +31,34 @@ public class Dungeon {
     }
     
     public void run() {
+        initializeDungeon();
         printMovesLeft();
-        
+        printPositions();
     }
     
     private void initializeDungeon() {
-        movables.add(new Player(moves));
-        
+        player = new Player(moves);
+        player.setLimits(height, length);
+        generateVampires();
     }
     
     private void printMovesLeft() {
         System.out.println(player.getMovesLeft());
     }
+    
+    private void generateVampires() {
+        VampireGenerator vampGen = new VampireGenerator(vampires, length, height);
+        vampiresList = new ArrayList<Vampire>();
+        vampiresList = vampGen.newVampires();
+    }
+    
+    private void printPositions() {
+        System.out.println();
+        System.out.println(player);
+        for(Vampire vampire : vampiresList) {
+            System.out.println(vampire);
+        }
+    }
      
 }
+

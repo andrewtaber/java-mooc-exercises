@@ -10,4 +10,9 @@ public class Vampire extends Movable{
         super(x, y);
     }
     
+    @Override
+    public String toString() {
+        return "v " + this.x + " " + this.y;
+    }
+    
 }

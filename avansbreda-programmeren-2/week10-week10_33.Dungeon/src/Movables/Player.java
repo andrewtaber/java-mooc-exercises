@@ -16,5 +16,9 @@ public class Player extends Movable{
         return this.movesLeft;
     }
     
+    @Override
+    public String toString() {
+        return "@ " + x + " " + y;
+    }
     
 }
