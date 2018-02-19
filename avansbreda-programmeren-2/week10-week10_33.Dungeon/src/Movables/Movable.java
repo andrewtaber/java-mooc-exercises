@@ -29,14 +29,14 @@ public abstract class Movable {
     }
     
     public void moveX(int x) {
-        if(this.x + x > length || this.x + x < 0) {
+        if(this.x + x >= length || this.x + x < 0) {
             return;
         }
         this.x += x;
     }
     
     public void moveY(int y) {
-        if(this.y + y > height || this.y + y < 0) {
+        if(this.y + y >= height || this.y + y < 0) {
             return;
         }
         this.y += y;

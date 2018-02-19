@@ -16,6 +16,10 @@ public class Player extends Movable{
         return this.movesLeft;
     }
     
+    public void moveUsed() {
+        movesLeft--;
+    }
+    
     @Override
     public String toString() {
         return "@ " + x + " " + y;
