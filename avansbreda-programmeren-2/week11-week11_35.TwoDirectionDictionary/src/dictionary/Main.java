@@ -1,7 +1,18 @@
 package dictionary;
 
+import java.io.FileNotFoundException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         // Test your dictionary here
+        
+        MindfulDictionary dict = new MindfulDictionary("src/words.txt");
+        dict.load();
+
+        System.out.println( dict.translate("apina") );
+        System.out.println( dict.translate("ohjelmointi") );
+        System.out.println( dict.translate("alla oleva") );
+        
+        
     }
 }
