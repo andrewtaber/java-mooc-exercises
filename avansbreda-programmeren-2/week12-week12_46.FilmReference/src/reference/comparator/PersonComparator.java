@@ -1,8 +1,9 @@
-package reference.domain;
+package reference.comparator;
 
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import reference.domain.Person;
 
 /**
  *

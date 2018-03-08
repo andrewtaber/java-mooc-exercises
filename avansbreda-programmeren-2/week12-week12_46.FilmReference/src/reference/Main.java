@@ -5,30 +5,47 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import reference.comparator.FilmComparator;
 import reference.domain.Film;
 import reference.domain.Person;
-import reference.domain.PersonComparator;
+import reference.comparator.PersonComparator;
 import reference.domain.Rating;
 
 
 public class Main {
 
     public static void main(String[] args) {
-            Person matti = new Person("Matti");
-            Person pekka = new Person("Pekka");
-            Person mikke = new Person("Mikke");
-            Person thomas = new Person("Thomas");
+        RatingRegister ratings = new RatingRegister();
 
-            Map<Person, Integer> peopleIdentities = new HashMap<Person, Integer>();
-            peopleIdentities.put(matti, 42);
-            peopleIdentities.put(pekka, 134);
-            peopleIdentities.put(mikke, 8);
-            peopleIdentities.put(thomas, 82);
+        Film goneWithTheWind = new Film("Gone with the Wind");
+        Film theBridgesOfMadisonCounty = new Film("The Bridges of Madison County");
+        Film eraserhead = new Film("Eraserhead");
+        Film bluesBrothers = new Film("Blues Brothers");
 
-            List<Person> ppl = Arrays.asList(matti, pekka, mikke, thomas);
-            System.out.println("People before sorting: " + ppl);
+        Person matti = new Person("Matti");
+        Person pekka = new Person("Pekka");
+        Person mikke = new Person("Mikael");
+        Person thomas = new Person("Thomas");
+        Person arto = new Person("Arto");
 
-            Collections.sort(ppl, new PersonComparator(peopleIdentities));
-            System.out.println("People after sorting: " + ppl);
+        ratings.addRating(matti, goneWithTheWind, Rating.BAD);
+        ratings.addRating(matti, theBridgesOfMadisonCounty, Rating.GOOD);
+        ratings.addRating(matti, eraserhead, Rating.FINE);
+
+        ratings.addRating(pekka, goneWithTheWind, Rating.FINE);
+        ratings.addRating(pekka, eraserhead, Rating.BAD);
+        ratings.addRating(pekka, bluesBrothers, Rating.MEDIOCRE);
+
+        ratings.addRating(mikke, eraserhead, Rating.BAD);
+
+        ratings.addRating(thomas, bluesBrothers, Rating.GOOD);
+        ratings.addRating(thomas, theBridgesOfMadisonCounty, Rating.GOOD);
+
+        Reference ref = new Reference(ratings);
+        System.out.println(thomas + " recommendation: " + ref.recommendFilm(thomas));
+        System.out.println(mikke + " recommendation: " + ref.recommendFilm(mikke));
+        System.out.println(matti + " recommendation: " + ref.recommendFilm(matti));
+        System.out.println(arto + " recommendation: " + ref.recommendFilm(arto));
     }
 }

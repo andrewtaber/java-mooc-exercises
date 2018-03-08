@@ -53,11 +53,27 @@ public class RatingRegister {
     }
     
     public Rating getRating(Person person, Film film) {
+        Map<Film, Rating> personsRatings = personalRatings.get(person);
+        
+        if(!personsRatings.containsKey(film)) {
+            return Rating.NOT_WATCHED;
+        }
         return personalRatings.get(person).get(film);
     }
     
     public Map<Film, Rating> getPersonalRatings(Person person) {
-        Map<Film, Rating> personsRatings = personalRatings.get(person);
+        Map<Film, Rating> personsRatings = new HashMap<Film, Rating>();
+                
+        if(!personalRatings.containsKey(person)) {
+            return personsRatings;
+        }
+        personsRatings = personalRatings.get(person);
+        
+//        if(personsRatings.isEmpty()) {
+//            for(Film film : films.keySet()) {
+//                personsRatings.put(film, getRating(person, film));
+//            }
+//        }
         return personsRatings;
     }
     
@@ -66,4 +82,5 @@ public class RatingRegister {
         reviewers.addAll(personalRatings.keySet());
         return reviewers;
     }
+    
 }
